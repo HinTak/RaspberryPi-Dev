@@ -9,7 +9,8 @@ without rebooting.
 Using [respeaker](https://github.com/respeaker/seeed-voicecard) as an example. Firstly, you need to make sure that
 no applications or background processes (like `pulseaudio` ...) are using the devices. Then you remove the devicetree
 overlay, before you unload the individual drivers. The steps need to be done according to dependency orders.
-what depends on what, can be found by `lsmod`.
+
+What depends on what, can be found by `lsmod`; and `lsof` if an application is keeping a device opened.
 
 ```
 $ sudo /opt/vc/bin/dtoverlay -d /boot/firmware/ -R seeed-8mic-voicecard
