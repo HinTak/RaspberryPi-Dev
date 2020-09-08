@@ -41,4 +41,8 @@ many kernel routines are executed **asynchronously**, triggered by external even
 - `pr_info()` works like `printf()`, but like `dump_stack()`, writes to the kernel ring buffer. `dev_info()` is a variant which prepends device name.
 Other variants of `pr_*()` and `dev_*()` exist. See `man 2 syslog` for details.
 
+- In kernel code, the equivalent of `assert()` in normal application code, is `BUG_ON()`. A full abort with `BUG_ON()`, immediately killing
+the current kernel thread, is very seldomly used though; instead, `WARN_ON()` let you do a more controlled abort. Both run `dump_stack()`,
+in addition to dumping registers' content.
+
 - There are more advanced technique with dynamic debugging, like `kernelshark` / `trace-cmd` (Ftrace), and `dtrace` (Systemtap) .
