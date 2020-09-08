@@ -46,3 +46,5 @@ the current kernel thread, is very seldomly used though; instead, `WARN_ON()` le
 in addition to dumping registers' content.
 
 - There are more advanced technique with dynamic debugging, like `kernelshark` / `trace-cmd` (Ftrace), and `dtrace` (Systemtap) .
+
+- The idea of "attaching a debugger" to a debug-enabled kernel, requires a second machine connected by a serial (RS-232) connection, with [KGDB](http://kgdb.wiki.kernel.org).
