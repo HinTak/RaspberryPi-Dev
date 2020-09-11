@@ -21,11 +21,12 @@ $ sudo modprobe -r snd_soc_simple_card_utils
 
 Then you modify and build your kernel modules (in [respeaker](https://github.com/respeaker/seeed-voicecard), by just doing `make`).
 `uname -r` shows `5.4.0-1016-raspi`, my currently running kernel. You copy the newly built kernel modules into the place where
-they would be found, updating the kernel dependencies with `depmod -a`, and re-load them:
+they would be found, updating the kernel dependencies with `depmod -a`, clear the kernel ring buffer, and re-load them:
 
 ```
 $ sudo cp *.ko /lib/modules/5.4.0-1016-raspi/updates/dkms/
 $ sudo depmod -a
+$ sudo dmesg -c > /dev/null
 $ sudo /usr/bin/seeed-voicecard
 ```
 
