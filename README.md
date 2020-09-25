@@ -49,3 +49,5 @@ in addition to dumping registers' content.
 - There are more advanced technique with dynamic debugging, like `kernelshark` / `trace-cmd` (Ftrace), and `dtrace` (Systemtap) .
 
 - The idea of "attaching a debugger" to a debug-enabled kernel, requires a second machine connected by a serial (RS-232) connection, with [KGDB](http://kgdb.wiki.kernel.org).
+
+[Linux Device Drivers, Third Edition](https://lwn.net/Kernel/LDD3/) is the authoritative though somewhat dated reference.
