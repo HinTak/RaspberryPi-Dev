@@ -15,6 +15,8 @@
 | raspberrypi-kernel_1.20200811-1       | 5.4.51 |
 | raspberrypi-kernel_1.20200819-1       | 5.4.51 |
 | raspberrypi-kernel_1.20200902-1       | 5.4.51 |
+| raspberrypi-kernel_1.20200902-1       | 5.4.51 |
+| raspberrypi-kernel_1.20201022-1       | 5.4.72 |
 
 `1.20200527-1` and `1.20200601+arm64-1` are 64-bit Aarch64-only releases, while the rest, up to `1.20200601-1`, are 32-bit only.
 `1.20200717-1` was the first release available in both forms.
@@ -41,6 +43,8 @@ raspberrypi-kernel_1.20200717-1
 raspberrypi-kernel_1.20200723-1
 raspberrypi-kernel_1.20200811-1
 raspberrypi-kernel_1.20200819-1
+raspberrypi-kernel_1.20200902-1
+raspberrypi-kernel_1.20201022-1
 ```
 
 Then we read each of their actual kernel version like this:
@@ -70,7 +74,8 @@ $ git tag | grep raspberrypi-kernel_1.2020 | xargs -n 1 -I{} git log -1 --decora
 commit 971a2bb14b459819db1bda8fcdf953e493242b42 (tag: raspberrypi-kernel_1.20200601+arm64-1, tag: raspberrypi-kernel_1.20200527-1)
 commit 3e92327867b6b40fed95ed36bb20f56d6e0cc879 (tag: raspberrypi-kernel_1.20200717-1)
 commit f0eeafb5d9109c2a1d512f045d7326a8a1d33e7e (tag: raspberrypi-kernel_1.20200723-1)
-commit f2f7e4b23d8788e96f81a7522b2f703e51c53e70 (tag: raspberrypi-kernel_1.20200819-1, tag: raspberrypi-kernel_1.20200811-1)
+commit f2f7e4b23d8788e96f81a7522b2f703e51c53e70 (tag: raspberrypi-kernel_1.20200902-1, tag: raspberrypi-kernel_1.20200819-1, tag: raspberrypi-kernel_1.20200811-1)
+commit ff93994fb3f92070d8521d709ad04675ecaa5817 (tag: raspberrypi-kernel_1.20201022-1)
 ```
 
 Likewise, tags **not** in the `rpi-5.4.y` branch:
@@ -90,31 +95,35 @@ This method has the advantage of showing which tags correspond to the same commi
 
 # Method 3
 
-`git branch -a --contains` is a lot slower, but the information is more direct:
+`git branch -a --contains` is a lot slower (the below took a little over two hours!), but the information is more direct:
 
 ```
 $  git tag | grep raspberrypi-kernel_1.2020 | xargs -n 1 -t git branch -a --contains
-git branch -a --contains raspberrypi-kernel_1.20200114-1
+git branch -a --contains raspberrypi-kernel_1.20200114-1 
   remotes/raspberrypi/rpi-4.19.y
-git branch -a --contains raspberrypi-kernel_1.20200205-1
+git branch -a --contains raspberrypi-kernel_1.20200205-1 
   remotes/raspberrypi/rpi-4.19.y
-git branch -a --contains raspberrypi-kernel_1.20200210-1
+git branch -a --contains raspberrypi-kernel_1.20200210-1 
   remotes/raspberrypi/rpi-4.19.y
-git branch -a --contains raspberrypi-kernel_1.20200212-1
+git branch -a --contains raspberrypi-kernel_1.20200212-1 
   remotes/raspberrypi/rpi-4.19.y
-git branch -a --contains raspberrypi-kernel_1.20200512-2
+git branch -a --contains raspberrypi-kernel_1.20200512-2 
   remotes/raspberrypi/rpi-4.19.y
-git branch -a --contains raspberrypi-kernel_1.20200527-1
-git branch -a --contains raspberrypi-kernel_1.20200601+arm64-1
-git branch -a --contains raspberrypi-kernel_1.20200601-1
+git branch -a --contains raspberrypi-kernel_1.20200527-1 
+git branch -a --contains raspberrypi-kernel_1.20200601+arm64-1 
+git branch -a --contains raspberrypi-kernel_1.20200601-1 
   remotes/raspberrypi/rpi-4.19.y
-git branch -a --contains raspberrypi-kernel_1.20200717-1
+git branch -a --contains raspberrypi-kernel_1.20200717-1 
   remotes/raspberrypi/rpi-5.4.y
-git branch -a --contains raspberrypi-kernel_1.20200723-1
+git branch -a --contains raspberrypi-kernel_1.20200723-1 
   remotes/raspberrypi/rpi-5.4.y
-git branch -a --contains raspberrypi-kernel_1.20200811-1
+git branch -a --contains raspberrypi-kernel_1.20200811-1 
   remotes/raspberrypi/rpi-5.4.y
-git branch -a --contains raspberrypi-kernel_1.20200819-1
+git branch -a --contains raspberrypi-kernel_1.20200819-1 
+  remotes/raspberrypi/rpi-5.4.y
+git branch -a --contains raspberrypi-kernel_1.20200902-1 
+  remotes/raspberrypi/rpi-5.4.y
+git branch -a --contains raspberrypi-kernel_1.20201022-1 
   remotes/raspberrypi/rpi-5.4.y
 ```
 
