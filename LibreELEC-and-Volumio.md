@@ -190,7 +190,7 @@ The kernel on Volumio is:
 Linux version 4.19.118-v7l+ (dom@buildbot) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1311 SMP Mon Apr 27 14:26:42 BST 2020
 ```
 
-This appears to be `1.20200512-2` or `1.20200601-1` (See Raspbian-Kernel-Releases.md).
+This appears to be `1.20200512-2` or `1.20200601-1` (See [Raspbian Kernel Versions](Raspbian-Kernel-Releases.md)).
 
 If your `apt list -a raspberrypi-kernel` on Volumio looks like this:
 
