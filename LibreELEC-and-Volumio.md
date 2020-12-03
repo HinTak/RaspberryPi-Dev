@@ -4,7 +4,9 @@
 
 http://releases.libreelec.tv/LibreELEC-RPi4.arm-9.2.6.img.gz
 
+```
 zcat LibreELEC-RPi4.arm-9.2.6.img.gz > LibreELEC-RPi4.arm-9.2.6.img
+```
 
 http://updates.volumio.org/pi/volumio/2.853/volumio-2.853-2020-11-20-pi.img.zip
 
