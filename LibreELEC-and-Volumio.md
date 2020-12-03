@@ -108,7 +108,7 @@ lrwxrwxrwx root/root                16 2020-10-24 22:04 squashfs-root/usr/lib/mo
 No `arecord`, and most of the dev tools. Also, `busybox` is not quite `bash`. `pacmd list-sources` is perhap a substitute for `arecord -L`.
 On Raspbian, `arecord` is a sym-link to `aplay`. It presumably behaves differently, depends on what names it sees itself as.
 
-TODO: where should `asound.conf`, `asound.state` be? And, `alctl` misbehaves due to `/sys` not there.
+TODO: where should `asound.conf`, `asound.state` be (possibly `/var/media/root/var/lib/alsa/asound.state`)? And, `alctl` misbehaves due to `/sys` not there.
 
 ## Volumio
 
