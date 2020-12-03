@@ -182,6 +182,25 @@ VOLUMIO_HASH="f7f9725bb5ce7d6da77135f468c28964"
 `unsquashfs /mnt/volumio_current.sqsh var/log`,
 `squashfs-root/var/log/apt/history.log` and `squashfs-root/var/log/dpkg.log` are the interesing files.
 
+The kernel on Volumio is:
+
 ```
 Linux version 4.19.118-v7l+ (dom@buildbot) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1311 SMP Mon Apr 27 14:26:42 BST 2020
 ```
+
+This appears to be `1.20200512-2` or `1.20200601-1` (See Raspbian-Kernel-Releases.md).
+
+If your `apt list -a raspberrypi-kernel` on Volumio looks like this:
+
+```
+Listing... Done
+raspberrypi-kernel/testing 1.20201022-1 armhf [upgradable from: 1.20200512-2]
+raspberrypi-kernel/now 1.20200512-2 armhf [installed,upgradable to: 1.20201022-1]
+```
+
+You should be able to download the matching header,
+
+http://archive.raspberrypi.org/debian/pool/main/r/raspberrypi-firmware/raspberrypi-kernel-headers_1.20200512-2_armhf.deb
+
+`dpkg -i` the downloaded file, then do `apt-mark hold raspberrypi-kernel raspberrypi-kernel-headers` and verify with `apt-mark showholds` that they are
+marked to skip from auto-upgrade.
