@@ -65,6 +65,20 @@ Partition 3: 286.1 MiB (300000256 bytes, 585938 sectors from 4882813)
     Volume size 286.1 MiB (299999232 bytes, 73242 blocks of 4 KiB)
 ```
 
+Berryboot:
+
+http://www.berryboot.com/ (interestingly, `https://` goes to a different site!)
+
+[berryboot-20201103-pi4.zip](https://downloads.sourceforge.net/project/berryboot/berryboot-20201103-pi4.zip)
+
+[//]: # (https://netix.dl.sourceforge.net/project/berryboot/berryboot-20201103-pi4.zip)
+
+```
+sha1sum: 36996289cf9f8b37a1ee46d96484b9d0658d5de3
+sha256sum: 2eae31aed11d2ff28c5ea629f3bbc1e317ff98cdcde187665046e5252a7341f9
+-rw-rw-r--. 1 Hin-Tak Hin-Tak 47723837 Nov  3 15:29 berryboot-20201103-pi4.zip
+```
+
 ### LibreELEC
 
 The offsets in bytes are sector offset `x512` (or divide by 2 and with `KiB` suffix):
@@ -206,3 +220,72 @@ http://archive.raspberrypi.org/debian/pool/main/r/raspberrypi-firmware/raspberry
 
 `dpkg -i` the downloaded file, then do `apt-mark hold raspberrypi-kernel raspberrypi-kernel-headers` and verify with `apt-mark showholds` that they are
 marked to skip from auto-upgrade.
+
+### Berryboot
+
+Berryboot contains more or less the same content as Raspbian's `/boot` or Ubuntu's `/boot/firmware`.
+
+Six files have no equivalents in Ubuntu's `/boot/firmware`:
+
+```
+-rw-r--r--  6.3 unx   171994 bx defN 20-Nov-03 16:12 bbloader.img
+-rw-r--r--  6.3 unx    47661 bx defN 20-Nov-03 16:12 bcm2711-rpi-cm4.dtb
+-rw-r--r--  6.3 unx 10726301 bx defN 20-Nov-03 16:12 berryboot.img
+-rw-r--r--  6.3 unx 16847360 bx defN 20-Nov-03 16:12 kernel_rpi64.img
+-rw-rw-r--  6.3 unx    32926 bx defN 19-Oct-05 02:15 LICENSE.berryboot
+-rw-r--r--  6.3 unx 22577152 bx defN 20-Nov-03 16:12 shared.img
+```
+
+`bcm2711-rpi-cm4.dtb` is for the Compute Module 4, which is newer than Ubuntu 20.04.1 LTS:
+
+```
+	compatible = "raspberrypi,4-compute-module\0brcm,bcm2711";
+	model = "Raspberry Pi Compute Module 4";
+```
+
+THe other 4 image files are:
+
+```
+bbloader.img:     lzop compressed data - version 1.030, LZO1X-999, os: Unix
+berryboot.img:    lzop compressed data - version 1.030, LZO1X-999, os: Unix
+kernel_rpi64.img: Linux kernel ARM64 boot executable Image, little-endian, 4K pages
+shared.img:       Squashfs filesystem, little endian, version 4.0, zlib compressed, 22574751 bytes, 2016 inodes, blocksize: 131072 bytes, created: Tue Nov  3 15:12:24 2020
+```
+
+`unsquashfs -ll shared.img` shows that it basically driver firmwares and kernel modules:
+
+```
+drwxr-xr-x root/root                26 2019-10-05 02:15 squashfs-root
+drwxr-xr-x root/root                58 2020-10-30 15:40 squashfs-root/lib
+drwxr-xr-x root/root               359 2020-11-03 15:10 squashfs-root/lib/firmware
+...
+drwxrwxr-x root/root                32 2020-11-03 15:11 squashfs-root/lib/modules
+drwxr-xr-x root/root               327 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64
+drwxr-xr-x root/root               149 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/kernel
+...
+-rw-r--r-- root/root            544762 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.alias
+-rw-r--r-- root/root            570240 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.alias.bin
+-rw-r--r-- root/root             14566 2020-11-03 15:11 squashfs-root/lib/modules/5.4.73v64/modules.builtin
+-rw-r--r-- root/root             16383 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.builtin.bin
+-rw-r--r-- root/root             65925 2020-11-03 15:11 squashfs-root/lib/modules/5.4.73v64/modules.builtin.modinfo
+-rw-r--r-- root/root            189748 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.dep
+-rw-r--r-- root/root            261937 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.dep.bin
+-rw-r--r-- root/root               324 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.devname
+-rw-r--r-- root/root             62341 2020-11-03 15:11 squashfs-root/lib/modules/5.4.73v64/modules.order
+-rw-r--r-- root/root               329 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.softdep
+-rw-r--r-- root/root            256144 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.symbols
+-rw-r--r-- root/root            315006 2020-11-03 15:12 squashfs-root/lib/modules/5.4.73v64/modules.symbols.bin
+```
+
+The two lzop compressed images are cpio archives. Their contents can be examined with:
+
+```
+lzop -dc bbloader.img | cpio -tv
+lzop -dc berryboot.img | cpio -tv
+```
+
+`bbloader.img` contains a busybox binary with a small init script; `berryboot.img` contains `BerrybootGUI` in a small OS with networking and
+misc filesystem support.
+
+`config.txt` contains a line `kernel=kernel_rpi64.img`, so `kernel_rpi64.img` functions like Raspbian's `kernel8.img`
+or Ubuntu's `uboot_rpi_4.bin` (`kernel=uboot_rpi_4.bin`).
