@@ -1,6 +1,6 @@
 # Rapid Linux Kernel Driver Development
 
-See also [Raspbian Kernel Versions](Raspbian-Kernel-Releases.md), and Information about [LibreELEC and Volumio](LibreELEC-and-Volumio.md).
+See also [Raspbian Kernel Versions](Raspbian-Kernel-Releases.md), and Information about [LibreELEC, Volumio and Berryboot](LibreELEC-and-Volumio.md).
 
 ## Unload / Reload without rebooting
 

@@ -1,6 +1,6 @@
 # Other Raspberry Pi distributions:
 
-## LibreELEC and Volumio
+## LibreELEC, Volumio and Berryboot
 
 http://releases.libreelec.tv/LibreELEC-RPi4.arm-9.2.6.img.gz
 
@@ -243,7 +243,7 @@ Six files have no equivalents in Ubuntu's `/boot/firmware`:
 	model = "Raspberry Pi Compute Module 4";
 ```
 
-THe other 4 image files are:
+The other 4 image files are:
 
 ```
 bbloader.img:     lzop compressed data - version 1.030, LZO1X-999, os: Unix
