@@ -8,17 +8,18 @@ Fixes:
   http://autobuild.buildroot.net/results/e815bed0e7b3d9cbf50ebf605666a50e7032e5a1/
 
 Signed-off-by: Bernd Kuhls <bernd.kuhls@t-online.de>
+Signed-off-by: Hin-Tak Leung <htl10@users.sourceforge.net>
 ---
  package/libgpg-error/0001-gawk5-support.patch | 162 ++++++++++++++++++++++++++
  package/libgpg-error/libgpg-error.mk          |   2 +
  2 files changed, 164 insertions(+)
  create mode 100644 package/libgpg-error/0001-gawk5-support.patch
 
-diff --git a/package/libgpg-error/0001-gawk5-support.patch b/package/libgpg-error/0001-gawk5-support.patch
+diff --git a/buildroot-2018.08/package/libgpg-error/0001-gawk5-support.patch b/buildroot-2018.08/package/libgpg-error/0001-gawk5-support.patch
 new file mode 100644
 index 0000000000..09d114c45f
 --- /dev/null
-+++ b/package/libgpg-error/0001-gawk5-support.patch
++++ b/buildroot-2018.08/package/libgpg-error/0001-gawk5-support.patch
 @@ -0,0 +1,162 @@
 +From 7865041c77f4f7005282f10f9b6666b19072fbdf Mon Sep 17 00:00:00 2001
 +From: NIIBE Yutaka <gniibe@fsij.org>
@@ -182,10 +183,10 @@ index 0000000000..09d114c45f
 +-- 
 +2.21.0
 +
-diff --git a/package/libgpg-error/libgpg-error.mk b/package/libgpg-error/libgpg-error.mk
+diff --git a/buildroot-2018.08/package/libgpg-error/libgpg-error.mk b/buildroot-2018.08/package/libgpg-error/libgpg-error.mk
 index 95f5988770..de4d114506 100644
---- a/package/libgpg-error/libgpg-error.mk
-+++ b/package/libgpg-error/libgpg-error.mk
+--- a/buildroot-2018.08/package/libgpg-error/libgpg-error.mk
++++ b/buildroot-2018.08/package/libgpg-error/libgpg-error.mk
 @@ -10,6 +10,8 @@ LIBGPG_ERROR_SOURCE = libgpg-error-$(LIBGPG_ERROR_VERSION).tar.bz2
  LIBGPG_ERROR_LICENSE = GPL-2.0+, LGPL-2.1+
  LIBGPG_ERROR_LICENSE_FILES = COPYING COPYING.LIB
@@ -194,7 +195,7 @@ index 95f5988770..de4d114506 100644
 +LIBGPG_ERROR_AUTORECONF = YES
  LIBGPG_ERROR_CONFIG_SCRIPTS = gpg-error-config
  LIBGPG_ERROR_DEPENDENCIES = $(TARGET_NLS_DEPENDENCIES)
- LIBGPG_ERROR_CONF_OPTS = --disable-tests \
+ 
 -- 
 cgit v1.2.1
 
