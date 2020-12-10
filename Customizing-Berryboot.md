@@ -32,22 +32,22 @@ enforce cryptographically signed modules, and update the mutual dependencies bet
 
 ## Capture logs while building Berryboot
 
-Appending `2>&1 | tee berryboot-build-log` to the berryboot build command, means capturing the output to a file while still displaying
+Appending `2>&1 | tee berryboot-build-log` to the berryboot build command, to capture the output to a file while still displaying
 it on screen:
 
 ```
 ./build-berryboot.sh device_pi0123 2>&1 | tee berryboot-build-log
-./build-berryboot.sh device_pi64 2>&1	| tee berryboot-build-log
+./build-berryboot.sh device_pi64   2>&1 | tee berryboot-build-log
 ```
 
-## Adding out-of-tree kernel driver modules
+## Adding out-of-tree kernel driver modules to Berryboot
 
 Berryboot builds a whole lots of tools (including a cross-compiler), then use those tools to cross-compile the linux kernel. We don't need
-to worry about the details, as it is all already done. We are only interested to build our out-of-tree kernel modules "the same way". To do this,
+to worry about the details, as it is all neatly done by the nice berryboot and buildroot developers. We are only interested in building our out-of-tree kernel modules "the same way". To do this,
 examine how the kernel is built, by `grep DEPMOD= berryboot-build-log` (this looks for the kernel module dependency tool
 being re-defined for cross-compilation).
 
-There are three nearly identical lines, differing by the ends:
+There are three nearly identical lines, differing by the endings:
 
 ```
 ... Image
@@ -68,7 +68,7 @@ cd /my-dev-area/seeed-voicecard
 ... M=`pwd` modules
 ```
 
-We cannot just do "M=`pwd` modules_install", as berryboot moves the installed kernel modules before packaging. Looking carefully at the whole cut-and-paste part, it includes this:
+We cannot just do "M=-pwd- modules_install", as berryboot moves the other installed kernel modules to `...shared/` before packaging. Looking carefully at the whole cut-and-paste common part, it includes this:
 
 ```
 ... INSTALL_MOD_PATH=/my-dev-area/berryboot/buildroot-2018.08/output/target ...
@@ -80,7 +80,7 @@ We need to edit the cut-and-paste part slightly to adjust to where the other mod
 ... INSTALL_MOD_PATH=/my-dev-area/berryboot/buildroot-2018.08/output/shared/ ... M=`pwd` modules_install
 ```
 
-Then, we switch back to working inside the berryboot directory.
+Then, we switch back to working inside the berryboot directory, regenerate `shared.img` and copy it to the correct place:
 
 ```
 # back to Berryboot:
@@ -97,7 +97,7 @@ cp output/images/shared.img ../output/shared.img
 ```
 
 You should check with `unsquashfs -ll ...` on the new `shared.img`, compared to the old `shared.img.vannilla`. Besides the new modules,
-many of the `.../lib/modules/--versions--/modules.*` module dependency files should be slightly larger, or at least the same size. Changings
+many of the `.../lib/modules/--versions--/modules.*` module dependency files should be slightly larger, or at least the same size. Changes
 in directory sizes are unimportant, and can go up or down depending on alignments inside squashfs, I think.
 
 Then you can delete `shared.img.vannilla`.
