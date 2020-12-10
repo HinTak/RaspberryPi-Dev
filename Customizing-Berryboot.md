@@ -24,7 +24,9 @@ make -C /lib/modules/`uname -r`/build M=`pwd` modules_install
 ```
 
 The `clean`, `modules`, `modules_install` targets are defined in the Linux kernel tree's top-level `Makefile`.
-The procedure is essentially the same for kernel modules included in the kernel source tree too. The steps are, look at the (partial)
+The procedure is essentially the same for kernel modules included in the kernel source tree (without the `-C ...` for the location of the kernel source) too.
+
+The steps are, look at the (partial)
 pre-configured kernel source tree at `/lib/modules/--curent_kernel--/build`, clean, build and install the modules (`M=`) in the current directory.
 The partial pre-configured kernel source tree is usually available as an additional `kernel-devel`, `kernel-headers` package for distribution-shipped
 kernels.
