@@ -102,7 +102,7 @@ This method has the advantage of showing which tags correspond to the same commi
 `git branch -a --contains` is a lot slower (the below took a little over two hours!), but the information is more direct:
 
 ```
-$  git tag | grep raspberrypi-kernel_1.2020 | xargs -n 1 -t git branch -a --contains
+$  git tag | grep raspberrypi-kernel_1.202 | xargs -n 1 -t git branch -a --contains
 git branch -a --contains raspberrypi-kernel_1.20200114-1 
   remotes/raspberrypi/rpi-4.19.y
 git branch -a --contains raspberrypi-kernel_1.20200205-1 
@@ -128,6 +128,14 @@ git branch -a --contains raspberrypi-kernel_1.20200819-1
 git branch -a --contains raspberrypi-kernel_1.20200902-1 
   remotes/raspberrypi/rpi-5.4.y
 git branch -a --contains raspberrypi-kernel_1.20201022-1 
+  remotes/raspberrypi/rpi-5.4.y
+git branch -a --contains raspberrypi-kernel_1.20201126-1 
+  remotes/raspberrypi/rpi-5.4.y
+git branch -a --contains raspberrypi-kernel_1.20201201-1 
+  remotes/raspberrypi/rpi-5.4.y
+git branch -a --contains raspberrypi-kernel_1.20210104-1 
+  remotes/raspberrypi/rpi-5.4.y
+git branch -a --contains raspberrypi-kernel_1.20210108-1 
   remotes/raspberrypi/rpi-5.4.y
 ```
 
