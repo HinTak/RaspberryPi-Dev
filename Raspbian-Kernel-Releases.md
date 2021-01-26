@@ -74,18 +74,20 @@ So `raspberrypi-kernel_1.20200114-1` corresponds to kernel `4.19.93`.
 `git log x..y` is empty, if `x` includes `y` as ancestor. Thus it is possible to work out that some recent tags are **not** in the `rpi-4.19.y` branch:
 
 ```
-$ git tag | grep raspberrypi-kernel_1.2020 | xargs -n 1 -I{} git log -1 --decorate raspberrypi/rpi-4.19.y..{} | grep ^commit | uniq
+$ git tag | grep raspberrypi-kernel_1.202 | xargs -n 1 -I{} git log -1 --decorate raspberrypi/rpi-4.19.y..{} | grep ^commit | uniq
 commit 971a2bb14b459819db1bda8fcdf953e493242b42 (tag: raspberrypi-kernel_1.20200601+arm64-1, tag: raspberrypi-kernel_1.20200527-1)
 commit 3e92327867b6b40fed95ed36bb20f56d6e0cc879 (tag: raspberrypi-kernel_1.20200717-1)
 commit f0eeafb5d9109c2a1d512f045d7326a8a1d33e7e (tag: raspberrypi-kernel_1.20200723-1)
 commit f2f7e4b23d8788e96f81a7522b2f703e51c53e70 (tag: raspberrypi-kernel_1.20200902-1, tag: raspberrypi-kernel_1.20200819-1, tag: raspberrypi-kernel_1.20200811-1)
 commit ff93994fb3f92070d8521d709ad04675ecaa5817 (tag: raspberrypi-kernel_1.20201022-1)
+commit 9797f1a4938c20139b00a25de93cc99efb5c291b (tag: raspberrypi-kernel_1.20201201-1, tag: raspberrypi-kernel_1.20201126-1)
+commit 76c49e60e742d0bebd798be972d67dd3fd007691 (tag: raspberrypi-kernel_1.20210108-1, tag: raspberrypi-kernel_1.20210104-1)
 ```
 
 Likewise, tags **not** in the `rpi-5.4.y` branch:
 
 ```
-$ git tag | grep raspberrypi-kernel_1.2020 | xargs -n 1 -I{} git log -1 --decorate raspberrypi/rpi-5.4.y..{} | grep ^commit | uniq
+$ git tag | grep raspberrypi-kernel_1.202 | xargs -n 1 -I{} git log -1 --decorate raspberrypi/rpi-5.4.y..{} | grep ^commit | uniq
 commit 767722747b98c2d57425f984da2a8192ae30cc69 (tag: raspberrypi-kernel_1.20200114-1)
 commit f16e91dad2af9d57aef477cc1f522040353849f5 (tag: raspberrypi-kernel_1.20200212-1, tag: raspberrypi-kernel_1.20200210-1, tag: raspberrypi-kernel_1.20200205-1)
 commit fe2c7bf4cad4641dfb6f12712755515ab15815ca (tag: raspberrypi-kernel_1.20200601-1, tag: raspberrypi-kernel_1.20200512-2)
@@ -95,11 +97,11 @@ commit fe2c7bf4cad4641dfb6f12712755515ab15815ca (tag: raspberrypi-kernel_1.20200
 
 `commit 971a2bb14b459819db1bda8fcdf953e493242b42` is not in either of the branches.
 
-This method has the advantage of showing which tags correspond to the same commit (just built differently).
+This method has the advantage of showing which tags correspond to the same commit (just built differently). These take a minute or two.
 
 # Method 3
 
-`git branch -a --contains` is a lot slower (the below took a little over two hours!), but the information is more direct:
+`git branch -a --contains` is a lot slower (the below took over two hours!), but the information is more direct:
 
 ```
 $  git tag | grep raspberrypi-kernel_1.202 | xargs -n 1 -t git branch -a --contains
