@@ -110,6 +110,7 @@ Lastly, copy the `*.dtbo` devicetree blobs from the `seeed-voicecard` driver dir
 the other `*.dtbo` are.
 
 Now your berryboot's `output` directory is ready to be zipped up into a "berryboot+respeaker" release.
+`cd output && zip -r9X ../berryboot+respeaker.zip *` as appropriate.
 
 ### Quirks and misc notes
 
