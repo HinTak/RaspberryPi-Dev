@@ -96,7 +96,7 @@ cd buildroot-2018.08/
 mksquashfs output/shared output/images/shared.img -all-root -noappend
 
 # Move the vanilla one aside, and copy the new shared.img into the right place 
-mv ../output/shared.img ../output/shared.img.vannilla
+mv ../output/shared.img ../shared.img.vannilla
 cp output/images/shared.img ../output/shared.img
 ```
 
