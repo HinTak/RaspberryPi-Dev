@@ -2,7 +2,16 @@
 
 ## Ubuntu
 
-#### Fixdep
+#### Quirks 1:
+
+`fakeroot debian/rules clean` on Fedora shows:
+```
+/bin/bash: line 2: kernel-wedge: command not found
+```
+
+This is obviously harmless. A new clone is as clean as it is...
+
+#### Quirks 2: Fixdep
 
 Background: [problem with cross-built kernel packages](https://github.com/raspberrypi/linux/issues/3279)
 
