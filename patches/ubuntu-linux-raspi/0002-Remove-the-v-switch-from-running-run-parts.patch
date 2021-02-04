@@ -1,0 +1,30 @@
+From cfd75084418a849794bb361c399c72c2cb0c903b Mon Sep 17 00:00:00 2001
+From: Hin-Tak Leung <htl10@users.sourceforge.net>
+Date: Thu, 4 Feb 2021 23:11:52 +0000
+Subject: [PATCH 2/3] Remove the -v switch from running run-parts
+
+Fedora's crontabs package comes with a run-parts which is an
+earlier clone of the one in debianutils. It is largely compatible
+except not having the -v/--verbose switch.
+
+Signed-off-by: Hin-Tak Leung <htl10@users.sourceforge.net>
+---
+ debian/rules.d/2-binary-arch.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/debian/rules.d/2-binary-arch.mk b/debian/rules.d/2-binary-arch.mk
+index fe1345d21b1c..0fbab2855339 100644
+--- a/debian/rules.d/2-binary-arch.mk
++++ b/debian/rules.d/2-binary-arch.mk
+@@ -332,7 +332,7 @@ endif
+ 	 PREV_REVISION="$(prev_revision)" ABI_NUM="$(abinum)"		\
+ 	 PREV_ABI_NUM="$(prev_abinum)" BUILD_DIR="$(builddir)/build-$*"	\
+ 	 INSTALL_DIR="$(pkgdir)" SOURCE_DIR="$(CURDIR)"			\
+-	 run-parts -v $(DROOT)/tests-build
++	 run-parts $(DROOT)/tests-build
+ 
+ 	#
+ 	# Remove files which are generated at installation by postinst,
+-- 
+2.29.2
+

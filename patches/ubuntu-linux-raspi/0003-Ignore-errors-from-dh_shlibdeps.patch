@@ -1,0 +1,36 @@
+From dc847d816d5ca6f2e5258b5b82c3e95e91391066 Mon Sep 17 00:00:00 2001
+From: Hin-Tak Leung <htl10@users.sourceforge.net>
+Date: Thu, 4 Feb 2021 23:16:54 +0000
+Subject: [PATCH 3/3] Ignore errors from dh_shlibdeps
+
+On cross-builds, scripts/basic/fixdep and friends get built as
+native. dh_shlibdeps identifies them as depending on /lib64/libc.so.6
+and fails with
+"error: no dependency information found for /lib64/libc.so.6"
+.
+
+Suppressing the error is relatively harmless as kernel packages
+don't generally depend on other packages, and also dependencies
+are already satisfied in an upgrade.
+
+Signed-off-by: Hin-Tak Leung <htl10@users.sourceforge.net>
+---
+ debian/rules.d/2-binary-arch.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/debian/rules.d/2-binary-arch.mk b/debian/rules.d/2-binary-arch.mk
+index 0fbab2855339..0fb3c22d5fef 100644
+--- a/debian/rules.d/2-binary-arch.mk
++++ b/debian/rules.d/2-binary-arch.mk
+@@ -537,7 +537,7 @@ define dh_all
+ 	dh_installdocs -p$(1)
+ 	dh_compress -p$(1)
+ 	dh_fixperms -p$(1) -X/boot/
+-	dh_shlibdeps -p$(1) $(shlibdeps_opts)
++	dh_shlibdeps -p$(1) $(shlibdeps_opts) || /bin/true
+ 	dh_installdeb -p$(1)
+ 	dh_installdebconf -p$(1)
+ 	$(lockme) dh_gencontrol -p$(1) -- -Vlinux:rprovides='$(rprovides)'
+-- 
+2.29.2
+
