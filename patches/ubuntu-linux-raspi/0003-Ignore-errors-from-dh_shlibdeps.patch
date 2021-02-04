@@ -1,4 +1,4 @@
-From dc847d816d5ca6f2e5258b5b82c3e95e91391066 Mon Sep 17 00:00:00 2001
+From 4cf671deb86f6b6ab4766dcbd5a1c6a869ca78db Mon Sep 17 00:00:00 2001
 From: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date: Thu, 4 Feb 2021 23:16:54 +0000
 Subject: [PATCH 3/3] Ignore errors from dh_shlibdeps
@@ -19,10 +19,10 @@ Signed-off-by: Hin-Tak Leung <htl10@users.sourceforge.net>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/debian/rules.d/2-binary-arch.mk b/debian/rules.d/2-binary-arch.mk
-index 0fbab2855339..0fb3c22d5fef 100644
+index fa31ddf0e401..6d65ffa7a436 100644
 --- a/debian/rules.d/2-binary-arch.mk
 +++ b/debian/rules.d/2-binary-arch.mk
-@@ -537,7 +537,7 @@ define dh_all
+@@ -538,7 +538,7 @@ define dh_all
  	dh_installdocs -p$(1)
  	dh_compress -p$(1)
  	dh_fixperms -p$(1) -X/boot/
