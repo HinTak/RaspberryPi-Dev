@@ -4,7 +4,8 @@
 
 Took 140% CPU 3:10:45 Elapsed, 15% CPU, 52:39.72 Elapsed, 12% CPU, 1:15:39 Elapsed; 106% CPU 4:16:53 Elapsed second build.
 
-Requires about 12.8GB of disk space, which consists of 1.8GB for the bare clone, 1.4GB for checkout'ed source code and debian/build/ eventually containing about 9.6GB.
+Requires about 12.8GB of disk space, which consists of 1.8GB for the bare clone, 1.1GB for checkout'ed source code and debian/build/ eventually containing
+about 9.6GB, and 0.3GB under debian.
 
 #### Quirks 1:
 
