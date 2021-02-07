@@ -137,4 +137,4 @@ Sometimes the one it picks is unresponsive and one needs to interrupt the downlo
 
 - The first (64-bit) vanilla build took about 4 hours 40 minutes on my laptop. This includes looking up fixes for building old softwares to current systems.
 All of these fixes are now in [a pull](https://github.com/maxnet/berryboot/pull/674) . The second (32-bit) vanilla build took just under 3 hours.
-Both requires 15GB+ disk space.
+Both requires 15GB+ disk space. 3 hours 20 minutes is the curent 64-bit figure.
