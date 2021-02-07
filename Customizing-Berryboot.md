@@ -84,6 +84,12 @@ We need to edit the cut-and-paste part slightly to adjust to where the other mod
 ... INSTALL_MOD_PATH=/my-dev-area/berryboot/buildroot-2018.08/output/shared/ ... M=`pwd` modules_install
 ```
 
+While you are in the driver directory, you should also copy the `*.dtbo` files too:
+
+```
+cp -p *.dtbo /my-dev-area/berryboot/output/overlays/
+```
+
 Then, we switch back to working inside the berryboot directory, regenerate `shared.img` and copy it to the correct place:
 
 ```
@@ -106,8 +112,6 @@ in directory sizes are unimportant, and can go up or down depending on alignment
 
 Then you can delete `shared.img.vannilla`.
 
-Lastly, copy the `*.dtbo` devicetree blobs from the `seeed-voicecard` driver directory into berryboot's `output/overlays/` directory, where all
-the other `*.dtbo` are.
 
 Now your berryboot's `output` directory is ready to be zipped up into a "berryboot+respeaker" release.
 `cd output && zip -r9X ../berryboot+respeaker.zip *` as appropriate.
