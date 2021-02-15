@@ -1,19 +1,58 @@
-From f99cd55af6f1c615ac66f10be169f437535b1552 Mon Sep 17 00:00:00 2001
+From f0640b31915b1fbb68bcd6c8680b8cd9ed11c21c Mon Sep 17 00:00:00 2001
 From: Hin-Tak Leung <htl10@users.sourceforge.net>
-Date: Thu, 4 Feb 2021 23:09:11 +0000
-Subject: [PATCH 1/3] Ubuntu-raspi-5.4.0-1026.29: switch to
- CONFIG_PREEMPT_VOLUNTARY in editconfigs
+Date: Sun, 14 Feb 2021 20:52:40 +0000
+Subject: [PATCH 3/3] Ubuntu-raspi-5.8.0-1013.16: switch to
+ CONFIG_PREEMPT_VOLUNTARY in editconfigs, and suppress #1890808 check
 
 Signed-off-by: Hin-Tak Leung <htl10@users.sourceforge.net>
 ---
- debian.raspi/config/config.common.ubuntu | 78 ++++++++++++++++++++----
- 1 file changed, 65 insertions(+), 13 deletions(-)
+ debian.raspi/config/annotations               |  4 +-
+ debian.raspi/config/arm64/config.common.arm64 |  1 -
+ debian.raspi/config/armhf/config.common.armhf |  1 -
+ debian.raspi/config/config.common.ubuntu      | 70 +++++++++++++++----
+ 4 files changed, 57 insertions(+), 19 deletions(-)
 
+diff --git a/debian.raspi/config/annotations b/debian.raspi/config/annotations
+index ef5f2d727..08799c695 100644
+--- a/debian.raspi/config/annotations
++++ b/debian.raspi/config/annotations
+@@ -19,5 +19,5 @@ CONFIG_VIDEO_IRS1125				mark<ENFORCED> note<LP: #1893779>
+ CONFIG_BRCM_TRACING				policy<{'arm64': 'n', 'armhf': 'n'}>
+ CONFIG_BRCM_TRACING				mark<ENFORCED> note<LP: #1893905>
+ 
+-CONFIG_PREEMPT					policy<{'arm64': 'y', 'armhf': 'y'}>
+-CONFIG_PREEMPT					mark<ENFORCED> note<LP: #1890808>
++CONFIG_PREEMPT_VOLUNTARY					policy<{'arm64': 'y', 'armhf': 'y'}>
++CONFIG_PREEMPT_VOLUNTARY					mark<ENFORCED> note<LP: #1890808>
+diff --git a/debian.raspi/config/arm64/config.common.arm64 b/debian.raspi/config/arm64/config.common.arm64
+index 5e4f8d7e7..441a1372a 100644
+--- a/debian.raspi/config/arm64/config.common.arm64
++++ b/debian.raspi/config/arm64/config.common.arm64
+@@ -5,7 +5,6 @@ CONFIG_ARCH_MMAP_RND_BITS=18
+ CONFIG_ARCH_MMAP_RND_BITS_MAX=33
+ CONFIG_ARCH_MMAP_RND_BITS_MIN=18
+ # CONFIG_BCM_VC_SM is not set
+-CONFIG_CC_VERSION_TEXT="aarch64-linux-gnu-gcc (Ubuntu 10.2.0-8ubuntu1) 10.2.0"
+ # CONFIG_FLATMEM_MANUAL is not set
+ CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE=0x1
+ # CONFIG_PAGE_EXTENSION is not set
+diff --git a/debian.raspi/config/armhf/config.common.armhf b/debian.raspi/config/armhf/config.common.armhf
+index 3df201ef8..9e5365812 100644
+--- a/debian.raspi/config/armhf/config.common.armhf
++++ b/debian.raspi/config/armhf/config.common.armhf
+@@ -4,7 +4,6 @@
+ CONFIG_ARCH_MMAP_RND_BITS=8
+ CONFIG_ARCH_MMAP_RND_BITS_MIN=8
+ CONFIG_BCM_VC_SM=y
+-CONFIG_CC_VERSION_TEXT="arm-linux-gnueabihf-gcc (Ubuntu 10.2.0-8ubuntu1) 10.2.0"
+ CONFIG_FLATMEM_MANUAL=y
+ CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE=0x01b6
+ CONFIG_PAGE_EXTENSION=y
 diff --git a/debian.raspi/config/config.common.ubuntu b/debian.raspi/config/config.common.ubuntu
-index 519f1ec25160..8aef7d8ddff7 100644
+index 9a33669be..446876fcf 100644
 --- a/debian.raspi/config/config.common.ubuntu
 +++ b/debian.raspi/config/config.common.ubuntu
-@@ -250,6 +250,32 @@ CONFIG_ARCH_HIBERNATION_HEADER=y
+@@ -261,6 +261,32 @@ CONFIG_ARCH_HIBERNATION_HEADER=y
  CONFIG_ARCH_HIBERNATION_POSSIBLE=y
  # CONFIG_ARCH_HIGHBANK is not set
  # CONFIG_ARCH_HISI is not set
@@ -46,7 +85,7 @@ index 519f1ec25160..8aef7d8ddff7 100644
  # CONFIG_ARCH_IOP32X is not set
  # CONFIG_ARCH_IXP4XX is not set
  # CONFIG_ARCH_K3 is not set
-@@ -844,7 +870,6 @@ CONFIG_BOOT_PRINTK_DELAY=y
+@@ -883,7 +909,6 @@ CONFIG_BOOT_PRINTK_DELAY=y
  CONFIG_BOUNCE=y
  CONFIG_BPF=y
  CONFIG_BPFILTER=y
@@ -54,23 +93,35 @@ index 519f1ec25160..8aef7d8ddff7 100644
  CONFIG_BPF_EVENTS=y
  CONFIG_BPF_JIT=y
  CONFIG_BPF_JIT_ALWAYS_ON=y
-@@ -1052,7 +1077,6 @@ CONFIG_CB710_CORE=m
+@@ -1093,8 +1118,6 @@ CONFIG_CB710_CORE=m
  CONFIG_CB710_DEBUG_ASSUMPTIONS=y
  CONFIG_CC10001_ADC=m
  CONFIG_CCS811=m
 -CONFIG_CC_CAN_LINK=y
+-CONFIG_CC_CAN_LINK_STATIC=y
  CONFIG_CC_HAS_ASM_GOTO=y
  CONFIG_CC_HAS_ASM_INLINE=y
- CONFIG_CC_HAS_KASAN_GENERIC=y
-@@ -1068,7 +1092,6 @@ CONFIG_CDROM_PKTCDVD=m
- CONFIG_CDROM_PKTCDVD_BUFFERS=8
+ CONFIG_CC_HAS_BRANCH_PROT_PAC_RET=y
+@@ -1109,6 +1132,7 @@ CONFIG_CC_HAVE_STACKPROTECTOR_SYSREG=y
+ CONFIG_CC_IS_GCC=y
+ CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE=y
+ # CONFIG_CC_OPTIMIZE_FOR_SIZE is not set
++CONFIG_CC_VERSION_TEXT="aarch64-linux-gnu-gcc (GCC) 10.2.1 20200826 (Red Hat Cross 10.2.1-3)"
+ # CONFIG_CDNS_I3C_MASTER is not set
+ CONFIG_CDROM=y
+ CONFIG_CDROM_PKTCDVD=m
+@@ -1116,10 +1140,7 @@ CONFIG_CDROM_PKTCDVD_BUFFERS=8
  # CONFIG_CDROM_PKTCDVD_WCACHE is not set
- CONFIG_CEC_CORE=y
--# CONFIG_CEC_GPIO is not set
+ CONFIG_CEC_CORE=m
+ CONFIG_CEC_CROS_EC=m
+-CONFIG_CEC_GPIO=m
  CONFIG_CEC_NOTIFIER=y
- CONFIG_CEC_PLATFORM_DRIVERS=y
+-CONFIG_CEC_PIN=y
+-# CONFIG_CEC_PIN_ERROR_INJ is not set
  CONFIG_CEPH_FS=m
-@@ -1570,7 +1593,6 @@ CONFIG_DEBUG_MISC=y
+ CONFIG_CEPH_FSCACHE=y
+ CONFIG_CEPH_FS_POSIX_ACL=y
+@@ -1646,7 +1667,6 @@ CONFIG_DEBUG_MISC=y
  # CONFIG_DEBUG_PER_CPU_MAPS is not set
  # CONFIG_DEBUG_PINCTRL is not set
  # CONFIG_DEBUG_PLIST is not set
@@ -78,25 +129,16 @@ index 519f1ec25160..8aef7d8ddff7 100644
  # CONFIG_DEBUG_RODATA_TEST is not set
  # CONFIG_DEBUG_RSEQ is not set
  # CONFIG_DEBUG_RT_MUTEXES is not set
-@@ -2376,7 +2398,16 @@ CONFIG_GAMEPORT=m
+@@ -2500,7 +2520,7 @@ CONFIG_GAMEPORT=m
  CONFIG_GAMEPORT_L4=m
  CONFIG_GAMEPORT_NS558=m
  CONFIG_GARP=m
--CONFIG_GCC_VERSION=90300
-+CONFIG_GCC_PLUGINS=y
-+CONFIG_GCC_PLUGIN_ARM_SSP_PER_TASK=y
-+# CONFIG_GCC_PLUGIN_CYC_COMPLEXITY is not set
-+# CONFIG_GCC_PLUGIN_LATENT_ENTROPY is not set
-+# CONFIG_GCC_PLUGIN_RANDSTRUCT is not set
-+# CONFIG_GCC_PLUGIN_STACKLEAK is not set
-+# CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF is not set
-+# CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL is not set
-+# CONFIG_GCC_PLUGIN_STRUCTLEAK_USER is not set
+-CONFIG_GCC_VERSION=100200
 +CONFIG_GCC_VERSION=100201
  # CONFIG_GCOV_KERNEL is not set
  CONFIG_GDB_SCRIPTS=y
  # CONFIG_GEMINI_ETHERNET is not set
-@@ -3073,6 +3104,31 @@ CONFIG_INIT_ENV_ARG_LIMIT=32
+@@ -3221,6 +3241,31 @@ CONFIG_INIT_ENV_ARG_LIMIT=32
  # CONFIG_INIT_ON_ALLOC_DEFAULT_ON is not set
  # CONFIG_INIT_ON_FREE_DEFAULT_ON is not set
  CONFIG_INIT_STACK_NONE=y
@@ -128,16 +170,7 @@ index 519f1ec25160..8aef7d8ddff7 100644
  CONFIG_INOTIFY_USER=y
  CONFIG_INPUT=y
  CONFIG_INPUT_88PM80X_ONKEY=m
-@@ -5228,7 +5284,7 @@ CONFIG_PLATFORM_MHU=m
- CONFIG_PLATFORM_SI4713=m
- # CONFIG_PLAT_SPEAR is not set
- CONFIG_PLIP=m
--CONFIG_PLUGIN_HOSTCC=""
-+CONFIG_PLUGIN_HOSTCC="g++"
- CONFIG_PM=y
- CONFIG_PMBUS=m
- CONFIG_PMIC_ADP5520=y
-@@ -5296,17 +5352,13 @@ CONFIG_PPS_CLIENT_LDISC=m
+@@ -5507,16 +5552,12 @@ CONFIG_PPS_CLIENT_LDISC=m
  CONFIG_PPS_CLIENT_PARPORT=m
  # CONFIG_PPS_DEBUG is not set
  CONFIG_PPTP=m
@@ -145,7 +178,6 @@ index 519f1ec25160..8aef7d8ddff7 100644
 -CONFIG_PREEMPTION=y
 +# CONFIG_PREEMPT is not set
  # CONFIG_PREEMPTIRQ_DELAY_TEST is not set
- # CONFIG_PREEMPTIRQ_EVENTS is not set
  CONFIG_PREEMPTIRQ_TRACEPOINTS=y
 -CONFIG_PREEMPT_COUNT=y
  # CONFIG_PREEMPT_NONE is not set
@@ -155,17 +187,9 @@ index 519f1ec25160..8aef7d8ddff7 100644
 -# CONFIG_PREEMPT_VOLUNTARY is not set
 +CONFIG_PREEMPT_VOLUNTARY=y
  CONFIG_PREVENT_FIRMWARE_BUILD=y
+ # CONFIG_PRIME_NUMBERS is not set
  CONFIG_PRINTER=m
- CONFIG_PRINTK=y
-@@ -7122,6 +7174,7 @@ CONFIG_TRACING=y
- CONFIG_TRACING_MAP=y
- CONFIG_TRACING_SUPPORT=y
- # CONFIG_TRANSPARENT_HUGEPAGE is not set
-+CONFIG_TREE_RCU=y
- CONFIG_TREE_SRCU=y
- CONFIG_TRUSTED_FOUNDATIONS=y
- CONFIG_TRUSTED_KEYS=y
-@@ -7194,7 +7247,6 @@ CONFIG_ULTRIX_PARTITION=y
+@@ -7500,7 +7541,6 @@ CONFIG_ULTRIX_PARTITION=y
  CONFIG_UNCOMPRESS_INCLUDE="debug/uncompress.h"
  CONFIG_UNICODE=y
  # CONFIG_UNICODE_NORMALIZATION_SELFTEST is not set
