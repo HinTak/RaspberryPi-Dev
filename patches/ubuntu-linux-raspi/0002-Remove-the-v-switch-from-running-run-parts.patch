@@ -1,4 +1,4 @@
-From 069038f1ab1a368d2dff10d19d6b2d1742506b6c Mon Sep 17 00:00:00 2001
+From 7e87997dd1bf39190ab9e55912a755724a176857 Mon Sep 17 00:00:00 2001
 From: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date: Thu, 4 Feb 2021 23:11:52 +0000
 Subject: [PATCH 2/3] Remove the -v switch from running run-parts
@@ -13,10 +13,10 @@ Signed-off-by: Hin-Tak Leung <htl10@users.sourceforge.net>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/debian/rules.d/2-binary-arch.mk b/debian/rules.d/2-binary-arch.mk
-index 703fd2ade338..fa31ddf0e401 100644
+index 0542c12a708b..abe65f8c5a8f 100644
 --- a/debian/rules.d/2-binary-arch.mk
 +++ b/debian/rules.d/2-binary-arch.mk
-@@ -332,7 +332,7 @@ endif
+@@ -347,7 +347,7 @@ endif
  	 PREV_REVISION="$(prev_revision)" ABI_NUM="$(abinum)"		\
  	 PREV_ABI_NUM="$(prev_abinum)" BUILD_DIR="$(builddir)/build-$*"	\
  	 INSTALL_DIR="$(pkgdir)" SOURCE_DIR="$(CURDIR)"			\
