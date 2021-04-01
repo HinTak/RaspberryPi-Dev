@@ -22,6 +22,7 @@
 | raspberrypi-kernel_1.20210104-1       | 5.4.83 |
 | raspberrypi-kernel_1.20210108-1       | 5.4.83 |
 | raspberrypi-kernel_1.20210201-1       | 5.10.11 |
+| raspberrypi-kernel_1.20210303-1       | 5.10.17 |
 
 `1.20200527-1` and `1.20200601+arm64-1` are 64-bit Aarch64-only releases, while the rest, up to `1.20200601-1`, are 32-bit only.
 `1.20200717-1` was the first release available in both forms.
@@ -35,7 +36,7 @@ The basic method is to read the beginning of the top-level `Makefile`.
 First, we get a list of tags we are interested in:
 
 ```
-$ git tag | grep raspberrypi-kernel_1.2020
+$ git tag | grep raspberrypi-kernel_1.202
 raspberrypi-kernel_1.20200114-1
 raspberrypi-kernel_1.20200205-1
 raspberrypi-kernel_1.20200210-1
@@ -50,6 +51,12 @@ raspberrypi-kernel_1.20200811-1
 raspberrypi-kernel_1.20200819-1
 raspberrypi-kernel_1.20200902-1
 raspberrypi-kernel_1.20201022-1
+raspberrypi-kernel_1.20201126-1
+raspberrypi-kernel_1.20201201-1
+raspberrypi-kernel_1.20210104-1
+raspberrypi-kernel_1.20210108-1
+raspberrypi-kernel_1.20210201-1
+raspberrypi-kernel_1.20210303-1
 ```
 
 Then we read each of their actual kernel version like this:
