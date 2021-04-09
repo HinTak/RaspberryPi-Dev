@@ -11,9 +11,9 @@ sudo apt-mark hold raspberrypi-kernel-headers raspberrypi-kernel
 sudo apt-mark showhold 
 ```
 
-The last step (`sudo apt-mark showhold`) is for verification. The `sudo apt-mark hold` stops them from getting auto-upgraded.
+The last step (`sudo apt-mark showhold`) is for verification. The `sudo apt-mark hold` step stops them from getting auto-upgraded.
 
-To unhold (again, the first step of verifying current holds is not needed), and go back to the latest:
+To unhold (again, repeating the first step of verifying current holds), and go back to the latest:
 
 ```
 sudo apt-mark showhold 
@@ -36,8 +36,8 @@ installed, and it does not automatically downgrade when one installs an earlier 
 What happens is that it copies the highest version available from `/boot` into `/boot/firmware`. To downgrade, one simply copies and over-write the pair of
 `/boot/initrd.img-x.y.z-NNNN-raspi` to `/boot/firmware/initrd.img`, and `/boot/vmlinuz-x.y.z-NNN-raspi` to /boot/firmware/vmlinuz` .
 
-For example, here is the listing `/boot` . `5.4.0-1032-raspi` is the latest from Ubuntu, and it was copied into `/boot/firmware` when first installed.
-I am able to switch between `5.4.0-1030` and `5.8.0-1013` (both built my me to work around [respeaker bug #251](https://github.com/respeaker/seeed-voicecard/issues/251)) by copying the corresponding pair into `/boot/firmware`.
+For example, here is my current listing of `/boot` . `5.4.0-1032-raspi` is the latest from Ubuntu, and it was copied into `/boot/firmware` when first installed.
+I am able to switch between `5.4.0-1030` and `5.8.0-1013` (both built by me to work around [respeaker bug #251](https://github.com/respeaker/seeed-voicecard/issues/251)) by copying the corresponding pair into `/boot/firmware`.
 
 ```
 ubuntu@ubuntu:~$ ls -l /boot
@@ -66,7 +66,7 @@ lrwxrwxrwx  1 root root       24 Apr  7 21:25 vmlinuz -> vmlinuz-5.8.0-1013-rasp
 lrwxrwxrwx  1 root root       24 Apr  7 21:25 vmlinuz.old -> vmlinuz-5.4.0-1030-raspi
 ```
 
-`vmlinuz.bak` and `initrd.img.bak` in `/boot/firmware/` are `5.4.0-1030` when it was the highest version.
+The backup `vmlinuz.bak` and `initrd.img.bak` in `/boot/firmware/` are `5.4.0-1030` when it was the highest version.
 
 ```
 ubuntu@ubuntu:~$ ls -l /boot/firmware/vm*
