@@ -21,7 +21,7 @@ sudo apt-mark unhold raspberrypi-kernel-headers raspberrypi-kernel
 sudo apt-get install raspberrypi-kernel-headers raspberrypi-kernel
 ```
 
-**Untested** - to downgrade to the last of the 4.19 (`raspberrypi-kernel_1.20200601-1`), replace the first two steps with:
+**Note (Another Tested Alternative):** To downgrade to the last of the 4.19 (`raspberrypi-kernel_1.20200601-1`), replace the first two steps with:
 
 ```
 wget -O kernel-headers_armhf.deb http://archive.raspberrypi.org/debian/pool/main/r/raspberrypi-firmware/raspberrypi-kernel-headers_1.20200601-1_armhf.deb
