@@ -17,6 +17,25 @@ $ git describe $(git merge-base raspberrypi/rpi-5.5.y stable/linux-5.5.y)
 v5.5.19
 ```
 
+```
+git log --format=oneline v5.4..v5.5 -- include/sound/soc-component.h include/sound/soc.h \
+sound/soc/soc-component.c sound/soc/soc-compress.c sound/soc/soc-core.c \
+sound/soc/soc-generic-dmaengine-pcm.c sound/soc/soc-pcm.c sound/soc/soc-utils.c > candidate-80
+```
+
+83 lines
+
+content of `archive-8-files`
+
+```
+#!/bin/sh
+git archive --prefix=a/include/sound/ ${1}:include/sound/         | (cd /tmp && tar -xpf -)
+git archive --prefix=a/sound/soc/ ${1}:sound/soc/                 | (cd /tmp && tar -xpf -)
+cd /tmp && tar -C a -cpvf /tmp/${1}.tar.gz include/sound/soc-component.h include/sound/soc.h \
+sound/soc/soc-component.c sound/soc/soc-compress.c \
+sound/soc/soc-core.c sound/soc/soc-generic-dmaengine-pcm.c sound/soc/soc-pcm.c sound/soc/soc-utils.c
+```
+
 touch records
 
 -rw-r--r-- 1 pi pi 0 Apr 20 13:06 73:e957204e732bc2916a241dc61dd7dd14e9a98350-okay
