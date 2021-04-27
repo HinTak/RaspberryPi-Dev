@@ -45,4 +45,13 @@ point to [raspberrypi/firmware](https://github.com/raspberrypi/firmware.git). Th
 The script requires [git-buildpackage](https://github.com/agx/git-buildpackage) ([Homepage/Documentation](https://honk.sigxcpu.org/piki/projects/git-buildpackage/)).
 This is unfortunately not available on Fedora.
 
+It is highly recommended to do `--depth 1` as `1.20180619-211-g543b33c769c` as of 1.20210303 release, Mar 3 2021, is 14GB!
+
+```
+$ du . | tail -n 1
+13815308	.
+$ du .git | tail -n 1
+13402764	.git
+```
+
 **Untested**
