@@ -151,3 +151,73 @@ git branch -a --contains raspberrypi-kernel_1.20210108-1
 ```
 
 Interestingly, this shows `raspberrypi-kernel_1.20200527-1` and `raspberrypi-kernel_1.20200601+arm64-1` are not in any branches.
+
+# Method 4
+
+The 14GB [firmware repository](git@github.com:RPi-Distro/firmware.git) has a `changelog` file. A shallow clone is sufficient for this purpose.
+The `changelog` contains information about kernel versions back to Sept 2019, and March 2018:
+
+```
+$ grep -E '(raspberrypi-firmware|Linux version|Kernel| 4.)' debian/changelog
+raspberrypi-firmware (1.20210430-1) buster; urgency=medium
+  * Linux version 5.10.17
+raspberrypi-firmware (1.20210303-1) buster; urgency=medium
+  * Linux version 5.10.17
+raspberrypi-firmware (1.20210201-1) buster; urgency=medium
+  * Linux version 5.10.11
+raspberrypi-firmware (1.20210108-1) buster; urgency=medium
+  * Linux version 5.4.83
+raspberrypi-firmware (1.20210104-1) buster; urgency=medium
+  * Linux version 5.4.83
+raspberrypi-firmware (1.20201201-1) buster; urgency=medium
+  * Linux version 5.4.79
+raspberrypi-firmware (1.20201126-1) buster; urgency=medium
+  * Linux version 5.4.79
+raspberrypi-firmware (1.20201022-1) buster; urgency=medium
+  * Linux version 5.4.72
+raspberrypi-firmware (1.20200902-2) buster; urgency=medium
+  * Linux version 5.4.51
+raspberrypi-firmware (1.20200902-1) buster; urgency=medium
+  * Linux version 5.4.51
+raspberrypi-firmware (1.20200819-1) buster; urgency=medium
+  * Linux version 5.4.51
+raspberrypi-firmware (1.20200811-1) buster; urgency=medium
+  * Linux version 5.4.51
+raspberrypi-firmware (1.20200805-1) buster; urgency=medium
+  * Linux version 5.4.51
+raspberrypi-firmware (1.20200723-1) buster; urgency=medium
+  * Linux version 5.4.51
+raspberrypi-firmware (1.20200717-1) buster; urgency=medium
+  * Linux version 5.4.51
+raspberrypi-firmware (1.20200601-1) buster; urgency=medium
+  * Linux version 4.19.118
+raspberrypi-firmware (1.20200512-2) buster; urgency=medium
+raspberrypi-firmware (1.20200512-1) buster; urgency=medium
+  * Linux version 4.19.118
+raspberrypi-firmware (1.20200212-1) buster; urgency=medium
+  * Linux version 4.19.97
+raspberrypi-firmware (1.20200210-1) buster; urgency=medium
+  * Linux version 4.19.97
+raspberrypi-firmware (1.20200205-1) buster; urgency=medium
+  * Linux version 4.19.97
+raspberrypi-firmware (1.20200203-1) buster; urgency=medium
+  * Linux version 4.19.97
+raspberrypi-firmware (1.20200131-1) buster; urgency=medium
+  * Linux version 4.19.93
+raspberrypi-firmware (1.20200114-1) buster; urgency=medium
+  * Linux version 4.19.93
+raspberrypi-firmware (1.20191119-1) buster; urgency=medium
+  * Linux version 4.19.83
+raspberrypi-firmware (1.20190925+1-1) buster; urgency=medium
+  * Linux version 4.19.75
+raspberrypi-firmware (1.20190925-2) buster; urgency=medium
+  * Linux version 4.19.75
+raspberrypi-firmware (1.20190925-1) buster; urgency=medium
+  * Linux version 4.19.75
+raspberrypi-firmware (1.20190916-1) buster; urgency=medium
+  * Linux version 4.19.71
+...
+raspberrypi-firmware (1.20180313-1) stretch; urgency=medium
+  * Kernel 4.9.80
+...
+```
