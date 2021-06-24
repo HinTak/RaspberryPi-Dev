@@ -40,7 +40,9 @@ Appending `2>&1 | tee berryboot-build-log` to the berryboot build command, to ca
 it on screen:
 
 ```
+# 32-bit build:
 ./build-berryboot.sh device_pi0123 2>&1 | tee berryboot-build-log
+# 64-bit build:
 ./build-berryboot.sh device_pi64   2>&1 | tee berryboot-build-log
 ```
 
