@@ -24,6 +24,7 @@
 | raspberrypi-kernel_1.20210201-1       | 5.10.11 |
 | raspberrypi-kernel_1.20210303-1       | 5.10.17 |
 | raspberrypi-kernel_1.20210430-1       | 5.10.17 |
+| raspberrypi-kernel_1.20210527-1       | 5.10.17 |
 
 `1.20200527-1` and `1.20200601+arm64-1` are 64-bit Aarch64-only releases, while the rest, up to `1.20200601-1`, are 32-bit only.
 `1.20200717-1` was the first release available in both forms.
