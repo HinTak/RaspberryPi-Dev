@@ -126,6 +126,8 @@ On Raspbian, `arecord` is a sym-link to `aplay`. It presumably behaves different
 
 TODO: where should `asound.conf`, `asound.state` be (possibly `/var/media/root/var/lib/alsa/asound.state`)? And, `alctl` misbehaves due to `/sys` not there.
 
+[wiki for customized builds](https://wiki.libreelec.tv/development-1/) and [development forum](https://forum.libreelec.tv/board/24-development/)
+
 ## Volumio
 
 ```
