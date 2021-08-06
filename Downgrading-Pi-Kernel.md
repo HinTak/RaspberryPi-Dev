@@ -12,6 +12,7 @@ sudo apt-mark showhold
 ```
 
 The last step (`sudo apt-mark showhold`) is for verification. The `sudo apt-mark hold` step stops them from getting auto-upgraded.
+For switching to other kernel versions, refer to the table in [Raspbian Kernel Releases](Raspbian-Kernel-Releases.md).
 
 To unhold (again, repeating the first step of verifying current holds), and go back to the latest:
 
