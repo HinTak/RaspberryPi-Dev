@@ -56,9 +56,14 @@ raspberrypi-kernel_1.20201022-1
 raspberrypi-kernel_1.20201126-1
 raspberrypi-kernel_1.20201201-1
 raspberrypi-kernel_1.20210104-1
+raspberrypi-kernel_1.20210107.master-1
 raspberrypi-kernel_1.20210108-1
+raspberrypi-kernel_1.20210108.master-1
+raspberrypi-kernel_1.20210111.master-1
 raspberrypi-kernel_1.20210201-1
 raspberrypi-kernel_1.20210303-1
+raspberrypi-kernel_1.20210430-1
+raspberrypi-kernel_1.20210527-1
 ```
 
 Then we read each of their actual kernel version like this:
