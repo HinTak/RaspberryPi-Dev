@@ -139,7 +139,7 @@ Sometimes the one it picks is unresponsive and one needs to interrupt the downlo
 
 - The first (64-bit) vanilla build took about 4 hours 40 minutes on my laptop. This includes looking up fixes for building old softwares to current systems.
 All of these fixes are now in [a pull](https://github.com/maxnet/berryboot/pull/674) . The second (32-bit) vanilla build took just under 3 hours.
-Both requires 16GB+ disk space. 3 hours 20 minutes is the curent 64-bit figure. 3 hours 50 minutes is the curent 32-bit figure with `20210805-pi0123`.
+Both requires 16GB+ disk space. 3 hours 20 minutes is the curent 64-bit figure with `20210206-pi64`. 3 hours 50 minutes is the curent 32-bit figure with `20210805-pi0123`.
 
 - The most recent (berryboot-20210624-pi64) took 6 hours 45 minutes, according to `buildroot-2018.08/output/build/build-time.log`, where berryboot keeps a running
 commentary of its work. The kernel itself took 2 hours and 10 minutes to build, and 35 minutes to download.
