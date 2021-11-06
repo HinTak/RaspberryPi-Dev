@@ -28,6 +28,9 @@
 | 1.20210727                            | 5.10.52 |
 | 1.20210805                            | 5.10.52 |
 | 1.20210831                            | 5.10.60 |
+| 1.20210928                            | 5.10.63 |
+| 1.20211007                            | 5.10.63 |
+| 1.20211029                            | 5.10.63 |
 
 `1.20200527-1` and `1.20200601+arm64-1` are 64-bit Aarch64-only releases, while the rest, up to `1.20200601-1`, are 32-bit only.
 `1.20200717-1` was the first release available in both forms.
