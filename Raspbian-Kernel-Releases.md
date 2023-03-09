@@ -171,6 +171,57 @@ The `changelog` contains information about kernel versions back to Sept 2019, an
 
 ```
 $ grep -E '(raspberrypi-firmware|Linux version|Kernel| 4.)' debian/changelog
+raspberrypi-firmware (1:1.20230306-1) bullseye; urgency=medium
+  * Linux version 5.15.84
+raspberrypi-firmware (1:1.20230106-1) bullseye; urgency=medium
+  * Linux version 5.15.84
+raspberrypi-firmware (1:1.20221104-1) bullseye; urgency=medium
+  * Linux version 5.15.76
+raspberrypi-firmware (1:1.20221028-1) bullseye; urgency=medium
+  * Linux version 5.15.74
+raspberrypi-firmware (1:1.20220830-1) bullseye; urgency=medium
+  * firmware as of 48cd70fe84432c5d050637b61e4b7b9c831c98bf
+  * Linux version 5.15.61
+raspberrypi-firmware (1:1.20220811-1) bullseye; urgency=medium
+  * Linux version 5.15.56
+raspberrypi-firmware (1:1.20220331-1) bullseye; urgency=medium
+  * Linux version 5.15.32
+raspberrypi-firmware (1:1.20220328-1) bullseye; urgency=medium
+  * Linux version 5.15.30
+raspberrypi-firmware (1:1.20220308-2) bullseye; urgency=medium
+raspberrypi-firmware (1:1.20220308-1) bullseye; urgency=medium
+  * Linux version 5.10.103
+raspberrypi-firmware (1:1.20220120-2) bullseye; urgency=medium
+raspberrypi-firmware (1:1.20220120-1) bullseye; urgency=medium
+  * Linux version 5.10.92
+raspberrypi-firmware (1:1.20220118-1) bullseye; urgency=medium
+  * Linux version 5.10.92
+raspberrypi-firmware (1:1.20220106-1) bullseye; urgency=medium
+  * Linux version 5.10.89
+raspberrypi-firmware (1:1.20211118-3) bullseye; urgency=medium
+raspberrypi-firmware (1:1.20211118-2) bullseye; urgency=medium
+raspberrypi-firmware (1:1.20211118-1) bullseye; urgency=medium
+  * Linux version 5.10.63
+raspberrypi-firmware (1:1.20211029-1) bullseye; urgency=medium
+  * Linux version 5.10.63
+raspberrypi-firmware (1:1.20211007-2) bullseye; urgency=medium
+raspberrypi-firmware (1:1.20211007-1) bullseye; urgency=medium
+  * Linux version 5.10.63
+raspberrypi-firmware (1:1.20210928-1) bullseye; urgency=medium
+  * Linux version 5.10.63
+raspberrypi-firmware (1:1.20210831-3) bullseye; urgency=medium
+raspberrypi-firmware (1:1.20210831-2) bullseye; urgency=medium
+raspberrypi-firmware (1:1.20210831-1) buster; urgency=medium
+  * firmware as of 46f356dcecc5204ca9a8cef7e6894e083b231bc7
+  * Linux version 5.10.60
+raspberrypi-firmware (1:1.20210805-1) buster; urgency=medium
+  * Linux version 5.10.52
+raspberrypi-firmware (1:1.20210727-1) buster; urgency=medium
+  * Linux version 5.10.52
+raspberrypi-firmware (1:1.20210527-1) buster; urgency=medium
+  * Linux version 5.10.17
+raspberrypi-firmware (1:1.20210430-2) buster; urgency=medium
+  * Linux version 5.10.17
 raspberrypi-firmware (1.20210430-1) buster; urgency=medium
   * Linux version 5.10.17
 raspberrypi-firmware (1.20210303-1) buster; urgency=medium
