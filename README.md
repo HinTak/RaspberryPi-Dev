@@ -3,6 +3,8 @@
 See also [Raspbian Kernel Versions](Raspbian-Kernel-Releases.md), and Information about [LibreELEC, Volumio and Berryboot](LibreELEC-and-Volumio.md).
 and [Customizing Berryboot with additional drivers](Customizing-Berryboot.md).
 
+The information in this repo came largely as a collection of notes and experiences from fixing [raspberrypi/linux#427](https://github.com/raspberrypi/linux/issues/4279) (more background [respeaker/seeed-voicecard#290](https://github.com/respeaker/seeed-voicecard/issues/290)).
+
 ## Unload / Reload without rebooting
 
 Apparently, this useful tips is not well-known : that it is possible to unload / reload linux kernel modules by using `modprobe`.
