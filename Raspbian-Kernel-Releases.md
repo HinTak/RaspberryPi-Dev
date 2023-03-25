@@ -284,3 +284,14 @@ raspberrypi-firmware (1.20180313-1) stretch; urgency=medium
   * Kernel 4.9.80
 ...
 ```
+
+## Method 4a
+
+A variant of the above, parsing the online version of that file, from https://github.com/RPi-Distro/firmware/ :
+
+```
+curl https://github.com/RPi-Distro/firmware/ | grep -i debian | cut -f 10 -d '"' \
+| xargs -I{} curl https://github.com/{} | grep changelog | cut -f 10 -d '"' \
+| xargs -I{} curl https://github.com/{} | grep raw-url | cut -f 4 -d '"' \
+| xargs -I{} wget -O - https://github.com/{} | grep -E '(raspberrypi-firmware|Linux version|Kernel| 4.)'
+```
