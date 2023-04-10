@@ -171,6 +171,11 @@ The `changelog` contains information about kernel versions back to Sept 2019, an
 
 ```
 $ grep -E '(raspberrypi-firmware|Linux version|Kernel| 4.)' debian/changelog
+raspberrypi-firmware (1:1.20230317-1) bullseye; urgency=medium
+  * firmware as of 4c6c5389d55d419e38f00116829d5a0f30c7bfbf
+  * Linux version 6.1.19
+raspberrypi-firmware (1:1.20230315-1) bullseye; urgency=medium
+  * Linux version 6.1.19
 raspberrypi-firmware (1:1.20230306-1) bullseye; urgency=medium
   * Linux version 5.15.84
 raspberrypi-firmware (1:1.20230106-1) bullseye; urgency=medium
